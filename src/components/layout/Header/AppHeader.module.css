@@ -1,0 +1,41 @@
+.appHeader {
+  width: 100%;
+  height: 4rem;
+  background-color: #6c3779;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.appHeader__logo--link {
+  text-decoration: none;
+  font-size: 2rem;
+  font-family: 'Brush Script MT', cursive;
+  color: #fff;
+  cursor: pointer;
+}
+
+.appHeader__navigation ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appHeader__navigation ul li {
+  padding: 0 1rem;
+}
+
+.appHeader__navigation--link {
+  text-decoration: none;
+  color: #a89a9a;
+}
+
+.appHeader__navigation--link:hover {
+  color: #fff;
+}
+
+.appHeader__navigation--link.active {
+  font-size: 1.2rem;
+  color: #fff;
+}
