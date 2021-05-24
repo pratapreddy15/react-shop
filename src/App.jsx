@@ -1,15 +1,13 @@
-import './App.css';
-
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Layout from './components/layout/Layout/Layout';
 import Home from './components/layout/Home/Home';
-import Products from './components/Products/Prducts';
-import Cart from './components/Cart/Cart';
+import Products from './pages/Products/Prducts';
+import Cart from './pages/Cart/Cart';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Layout>
         <Switch>
           <Route path="/" exact>
