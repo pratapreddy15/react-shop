@@ -1,0 +1,18 @@
+.quantityInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.quantityText {
+  width: 40px;
+  padding: 5px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.quantityButton {
+  padding: 5px 10px;
+  background-color: #6c3779;
+}
