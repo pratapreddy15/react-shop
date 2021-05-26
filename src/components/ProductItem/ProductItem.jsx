@@ -12,6 +12,12 @@ const ProductItem = (props) => {
 
   const { product } = props;
 
+  const productIndex = cartContext.items.findIndex((item) => item.id === product.id);
+  let quantity = 0;
+  if (productIndex > -1) {
+    quantity = cartContext.items[productIndex].quantity;
+  }
+
   const addProductHandler = () => {
     cartContext.addItem({ ...product, quantity: 1 });
   };
@@ -26,7 +32,11 @@ const ProductItem = (props) => {
       </div>
       <div className={classes.productTitle}>{product.title}</div>
       <div className={classes.productAmount}>A$ {product.price.toFixed(2)}</div>
-      <QuantityInput onAdd={addProductHandler} onRemove={removeProductHandler} />
+      <QuantityInput
+        onAdd={addProductHandler}
+        onRemove={removeProductHandler}
+        initialValue={quantity}
+      />
     </Card>
   );
 };

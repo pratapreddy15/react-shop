@@ -1,9 +1,14 @@
-import classes from './Cart.module.css';
+// import classes from './Cart.module.css';
 
-import React from 'react';
+import React, { useContext } from 'react';
+import CartContext from '../../store/cart-context';
+
+import CartList from '../../components/CartList/CartList';
 
 const Cart = () => {
-  return <h1 className={classes.cart}>This is Cart page!</h1>;
+  const cartContext = useContext(CartContext);
+  const items = cartContext.items;
+  return <CartList products={items} />;
 };
 
 export default Cart;
