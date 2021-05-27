@@ -39,24 +39,3 @@
   margin: 0 10px;
   transition: all 250ms ease-in-out;
 }
-
-.btnYes {
-  color: teal;
-}
-
-.btnClose,
-.btnNo {
-  color: tomato;
-  border: 1px solid tomato;
-}
-
-.btnYes:hover {
-  background-color: teal;
-  color: #fff;
-}
-
-.btnClose:hover,
-.btnNo:hover {
-  background-color: tomato;
-  color: #fff;
-}

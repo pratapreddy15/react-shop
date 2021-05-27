@@ -1,0 +1,124 @@
+.bg-transparent {
+  background-color: transparent;
+}
+
+.centered-horizontally {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-vertically {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-success {
+  background-color: var(--color-success);
+}
+
+.centered {
+  margin: 3rem auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focused {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.btn {
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn-small {
+  padding: 5px 10px;
+}
+
+.btn-medium {
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-solid.primary {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: white;
+}
+
+.btn-solid.primary:active,
+.btn-solid.primary:hover {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.btn-solid.secondary:active,
+.btn-solid.secondary:hover {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.btn-flat.secondary {
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+  background-color: none;
+}
+
+.btn-flat.secondary:active,
+.btn-flat.secondary:hover {
+  background-color: var(--color-danger);
+  color: white;
+}
+
+.btn-flat.primary {
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+  background-color: none;
+}
+
+.btn-flat.primary:active,
+.btn-flat.primary:hover {
+  background-color: var(--color-success);
+  color: white;
+}
+
+/* .btn {
+  text-decoration: none;
+  background-color: teal;
+  color: white;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid teal;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #11acac;
+  border-color: #11acac;
+} */
+
+/* .btn--flat {
+  cursor: pointer;
+  font: inherit;
+  color: teal;
+  border: none;
+  background-color: none;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+}
+
+.btn--flat:hover,
+.btn--flat:active {
+  background-color: teal;
+  color: white;
+} */
