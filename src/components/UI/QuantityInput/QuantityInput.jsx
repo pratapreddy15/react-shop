@@ -1,6 +1,6 @@
 import classes from './QuantityInput.module.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import Modal from '../../Modal/Modal';
@@ -11,25 +11,10 @@ const QuantityInput = (props) => {
   const isCartActive = location.pathname === '/cart';
 
   const [quantity, setQuantity] = useState(initialValue);
-  const [operation, setOperation] = useState(null);
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [modalText, setModalText] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const [modalType, setModalType] = useState('');
-
-  const btnClasses = ['btn', classes.quantityButton];
-
-  useEffect(() => {
-    if (operation === 'add' && quantity < 10) {
-      onAdd();
-      return;
-    }
-
-    if (operation === 'remove') {
-      onRemove();
-      return;
-    }
-  }, [operation, quantity]);
 
   const addButtonClickHandler = () => {
     if (quantity >= 10) {
@@ -49,10 +34,12 @@ const QuantityInput = (props) => {
         return prevQuantity;
       }
     });
-    setOperation('add');
+    onAdd();
   };
 
   const removeButtonClickHandler = () => {
+    if (quantity === 0) return;
+
     if (isCartActive && quantity === 1) {
       setModalIsVisible(true);
       setModalTitle('Alert!');
@@ -64,19 +51,19 @@ const QuantityInput = (props) => {
     }
 
     setQuantity((prevQuantity) => {
-      if (prevQuantity <= 0) {
+      if (prevQuantity <= 1) {
         return 0;
       } else {
         return prevQuantity - 1;
       }
     });
-    setOperation('remove');
+    onRemove();
   };
 
   const modalConfirmedYesHandler = () => {
     setQuantity(0);
-    setOperation('remove');
     setModalIsVisible(false);
+    onRemove();
   };
 
   const modalConfirmedNoHandler = () => {
@@ -96,11 +83,13 @@ const QuantityInput = (props) => {
         />
       )}
       <div className={classes.quantityInput}>
-        <button className={btnClasses.join(' ')} onClick={addButtonClickHandler}>
+        <button className={`btn ${classes.quantityButton}`} onClick={addButtonClickHandler}>
           +
         </button>
         <input type="text" disabled className={classes.quantityText} value={quantity}></input>
-        <button className={btnClasses.join(' ')} onClick={removeButtonClickHandler}>
+        <button
+          className={`btn ${classes.quantityButton} ${classes.quantityButtonRemove}`}
+          onClick={removeButtonClickHandler}>
           -
         </button>
       </div>
