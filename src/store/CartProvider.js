@@ -10,7 +10,6 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
-    const updatedTotalAmount = state.totalAmount + action.item.price * action.item.quantity;
     const existingCartItemIndex = state.items.findIndex((item) => item.id === action.item.id);
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
@@ -24,16 +23,26 @@ const cartReducer = (state, action) => {
     } else {
       updatedItems = state.items.concat(action.item);
     }
+
+    const updatedTotalAmount =
+      parseInt(state.totalAmount) + parseInt(action.item.price) * parseInt(action.item.quantity);
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount
+      totalAmount: updatedTotalAmount.toFixed(2)
     };
   }
 
   if (action.type === 'REMOVE') {
     const existingCartItemIndex = state.items.findIndex((item) => item.id === action.id);
     const existingCartItem = state.items[existingCartItemIndex];
-    const updatedTotalAmount = state.totalAmount - existingCartItem.price;
+
+    if (!existingCartItem) {
+      return {
+        items: [...state.items],
+        totalAmount: state.totalAmount.toFixed(2)
+      };
+    }
+
     let updatedItems;
 
     if (existingCartItem.quantity === 1) {
@@ -46,9 +55,11 @@ const cartReducer = (state, action) => {
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
     }
+
+    const updatedTotalAmount = parseInt(state.totalAmount) - parseInt(existingCartItem.price);
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount
+      totalAmount: updatedTotalAmount.toFixed(2)
     };
   }
 
@@ -68,7 +79,7 @@ const CartProvider = (props) => {
 
   const cartContext = {
     items: cartState.items,
-    totalAmount: cartState.totalAmount,
+    totalAmount: parseInt(cartState.totalAmount),
     addItem: addItemHandler,
     removeItem: removeItemHandler
   };
