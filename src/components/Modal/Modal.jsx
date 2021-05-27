@@ -9,7 +9,7 @@ const Modal = (props) => {
 
   if (props.type === 'Basic') {
     actionButtons = (
-      <button className={classes.btnClose} onClick={props.onClose}>
+      <button className="btn btn-flat btn-medium secondary" onClick={props.onClose}>
         Close
       </button>
     );
@@ -18,10 +18,10 @@ const Modal = (props) => {
   if (props.type === 'Confirmation') {
     actionButtons = (
       <React.Fragment>
-        <button className={classes.btnYes} onClick={props.onConfirmedYes}>
+        <button className="btn btn-flat btn-medium primary" onClick={props.onConfirmedYes}>
           Yes
         </button>
-        <button className={classes.btnNo} onClick={props.onConfirmedNo}>
+        <button className="btn btn-flat btn-medium secondary" onClick={props.onConfirmedNo}>
           No
         </button>
       </React.Fragment>

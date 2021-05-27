@@ -82,13 +82,13 @@ const QuantityInput = (props) => {
           onClose={() => setModalIsVisible(false)}
         />
       )}
-      <div className={classes.quantityInput}>
-        <button className={`btn ${classes.quantityButton}`} onClick={addButtonClickHandler}>
+      <div className={`${classes.quantityInput} ${'centered-horizontally'}`}>
+        <button className="btn btn-solid btn-small primary" onClick={addButtonClickHandler}>
           +
         </button>
         <input type="text" disabled className={classes.quantityText} value={quantity}></input>
         <button
-          className={`btn ${classes.quantityButton} ${classes.quantityButtonRemove}`}
+          className={`btn btn-solid btn-small secondary ${classes.btnRemove}`}
           onClick={removeButtonClickHandler}>
           -
         </button>

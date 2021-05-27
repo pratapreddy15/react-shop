@@ -1,7 +1,4 @@
 .quantityInput {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 5px 0;
 }
 
@@ -12,12 +9,7 @@
   text-align: center;
 }
 
-.quantityButton {
-  padding: 5px 10px;
-  background-color: #6c3779;
-}
-
-.quantityButtonRemove:hover,
-.quantityButtonRemove:active {
-  background-color: tomato;
+.btnRemove {
+  background-color: var(--color-primary);
+  color: white;
 }
