@@ -1,4 +1,12 @@
 .home {
+  padding: 1rem 2rem;
+}
+
+.top,
+.bottom {
+  font-family: 'Merienda One', cursive;
+  font-size: 3rem;
+  margin: 2rem 0;
 }
 
 .top {
