@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
+
+import useHttp from '../../hooks/use-http';
+import { getAllUsers } from '../../lib/api';
 import NoProductsFound from '../../components/NoProductsFound/NoProductsFound';
 import Spinner from '../../components/UI/Spinner';
-import useHttp from '../../hooks/use-http';
-import { getAllProducts } from '../../lib/api';
-import ProductList from '../../components/ProductList/ProductList';
+import UserList from '../../components/UserList/UserList';
 
-const Products = () => {
-  const { sendRequest, status, data: loadedProducts, error } = useHttp(getAllProducts);
+const Users = () => {
+  const { sendRequest, data: allUsers, error, status } = useHttp(getAllUsers);
 
   useEffect(() => {
     sendRequest();
@@ -24,11 +25,11 @@ const Products = () => {
     return <p className="focused centered-vertically">{error}</p>;
   }
 
-  if (status === 'completed' && (!loadedProducts || loadedProducts.length === 0)) {
+  if (status === 'completed' && (!allUsers || allUsers.length === 0)) {
     return <NoProductsFound />;
   }
 
-  return <ProductList products={loadedProducts} />;
+  return <UserList users={allUsers} />;
 };
 
-export default Products;
+export default Users;

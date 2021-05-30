@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout/Layout';
 import Home from './components/layout/Home/Home';
 import Products from './pages/Products/Prducts';
 import Cart from './pages/Cart/Cart';
+import Users from './pages/Users/Users';
 import CartProvider from './store/CartProvider';
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/cart">
               <Cart />
+            </Route>
+            <Route path="/users">
+              <Users />
             </Route>
           </Switch>
         </Layout>
