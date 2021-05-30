@@ -24,6 +24,10 @@ const Home = () => {
           <span> or </span>
           <a href="#">Login</a>
         </p>
+        <p>
+          <NavLink to="/users">Click here</NavLink>
+          <span> to get a list of users you can use for login.</span>
+        </p>
       </div>
     </div>
   );

@@ -1,0 +1,19 @@
+.userItem {
+  width: 100%;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.userItem span {
+  font-weight: bold;
+}
+
+.displayName {
+  color: var(--color-success);
+  font-size: 1.5rem;
+}
+
+.displayName,
+.userName,
+.password {
+  margin: 1rem 0;
+}
