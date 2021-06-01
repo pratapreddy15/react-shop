@@ -1,9 +1,13 @@
 import classes from './Home.module.css';
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import AuthContext from '../../../store/auth-context';
 
 const Home = () => {
+  const authCtx = useContext(AuthContext);
+  console.log('Token', authCtx.token);
+
   return (
     <div className={classes.home}>
       <div className={classes.top}>
@@ -19,15 +23,19 @@ const Home = () => {
           </NavLink>{' '}
           for all the available products.
         </p>
-        <p>
-          <a href="#">Register</a>
-          <span> or </span>
-          <a href="#">Login</a>
-        </p>
-        <p>
-          <NavLink to="/users">Click here</NavLink>
-          <span> to get a list of users you can use for login.</span>
-        </p>
+        {!authCtx.token && (
+          <>
+            <p>
+              <a href="#">Register</a>
+              <span> or </span>
+              <NavLink to="/login">Login</NavLink>
+            </p>
+            <p>
+              <NavLink to="/users">Click here</NavLink>
+              <span> to get a list of users you can use for login.</span>
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

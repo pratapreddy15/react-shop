@@ -1,0 +1,23 @@
+.userLogin {
+  height: 50vh;
+  width: 50vw;
+  margin: auto;
+}
+
+.formControl,
+.moreUsers {
+  margin: 2rem 0;
+}
+
+.formControl input {
+  width: 20rem;
+  height: 2rem;
+  padding: 5px 10px;
+}
+
+.actions {
+  justify-content: flex-start;
+}
+
+.loader {
+}

@@ -2,7 +2,7 @@ import classes from './Layout.module.css';
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppHeader from '../Header/AppHeader';
+import AppHeader from '../AppHeader/AppHeader';
 
 const Layout = (props) => {
   return (

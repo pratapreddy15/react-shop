@@ -14,7 +14,8 @@ const UserList = (props) => {
             key={u.id}
             userName={u.username}
             password={u.password}
-            displayName={`${u.name.firstname} ${u.name.lastname}`}
+            firstName={u.name.firstname}
+            lastName={u.name.lastname}
           />
         );
       })}
