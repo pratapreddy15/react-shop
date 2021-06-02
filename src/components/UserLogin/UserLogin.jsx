@@ -1,17 +1,18 @@
 import classes from './UserLogin.module.css';
 
-import React, { useRef, useContext, useEffect } from 'react';
+import React, { useRef, useContext, useState } from 'react';
 import { useHistory, Link, useLocation } from 'react-router-dom';
 
+import Spinner from '../UI/Spinner';
 import AuthContext from '../../store/auth-context';
 import useHttp from '../../hooks/use-http';
 import { login } from '../../lib/api';
-// import Spinner from '../UI/Spinner';
 
 const UserLogin = () => {
   const authContext = useContext(AuthContext);
   const location = useLocation();
   const history = useHistory();
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const searchParams = new URLSearchParams(location.search);
   const initialUserName = searchParams.get('username');
@@ -21,32 +22,28 @@ const UserLogin = () => {
   const userNameInputRef = useRef(null);
   const passwordInputRef = useRef(null);
 
-  useEffect(() => {
-    if (data) {
-      authContext.setToken(data.token);
-    }
-
-    if (status === 'completed') {
-      history.replace('/');
-    }
-  }, [status, data]);
-
-  // if (status === 'pending') {
-  //   return (
-  //     <div className="centered-horizontally">
-  //       <Spinner />
-  //     </div>
-  //   );
-  // }
-
   const submitFormHandler = (event) => {
     event.preventDefault();
 
     const userName = userNameInputRef.current.value;
     const password = passwordInputRef.current.value;
 
+    setIsLoggingIn(true);
     sendRequest({ userName: userName, password: password });
   };
+
+  if (isLoggingIn && status === 'pending') {
+    return (
+      <div className="centered-horizontally">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (status === 'completed' && data) {
+    history.replace('/');
+    authContext.setToken(data.token);
+  }
 
   if (error) {
     return <p className="centered-horizontally">{error}</p>;
@@ -81,7 +78,6 @@ const UserLogin = () => {
           <button type="submit" className="btn btn-medium btn-solid primary">
             Login
           </button>
-          {/* {status != 'pending' && <Spinner />} */}
         </div>
       </form>
     </div>
