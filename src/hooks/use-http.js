@@ -45,7 +45,6 @@ const useHttp = (requestFn) => {
       const responseData = await requestFn(requestData);
       dispatch({ type: 'SUCCESS', responseData });
     } catch (error) {
-      console.log(error);
       dispatch({ type: 'ERROR', errorMessage: error.message || 'Something went wrong!' });
     }
   }, []);

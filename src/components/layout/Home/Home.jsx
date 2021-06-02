@@ -6,7 +6,6 @@ import AuthContext from '../../../store/auth-context';
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
-  console.log('Token', authCtx.token);
 
   return (
     <div className={classes.home}>

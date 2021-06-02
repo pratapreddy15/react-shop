@@ -46,32 +46,6 @@ const withCartEvents = (WrappedComponent) => {
   };
 
   return ItemDisplay;
-
-  // return function itemDisplay() {
-  //   const cartContext = useContext(CartContext);
-
-  //   const productIndex = cartContext.items.findIndex((item) => item.id === product.id);
-  //   let quantity = 0;
-  //   if (productIndex > -1) {
-  //     quantity = cartContext.items[productIndex].quantity;
-  //   }
-
-  //   const addProductHandler = () => {
-  //     cartContext.addItem({ ...product, quantity: 1 });
-  //   };
-
-  //   const removeProductHandler = () => {
-  //     cartContext.removeItem(product.id);
-  //   };
-
-  //   return (
-  //     <WrappedComponent
-  //       product={{ ...product, quantity }}
-  //       onAdd={addProductHandler}
-  //       onRemove={removeProductHandler}
-  //     />
-  //   );
-  // };
 };
 
 export default withCartEvents;

@@ -8,6 +8,10 @@ const AppHeader = () => {
   const authCtx = useContext(AuthContext);
   const isUserLoggedIn = !!authCtx.token;
 
+  const logoutClickHandler = () => {
+    authCtx.setToken('');
+  }
+
   return (
     <header className={classes.appHeader}>
       <div className={classes['appHeader__logo']}>
@@ -46,6 +50,11 @@ const AppHeader = () => {
                 to="/cart">
                 Cart
               </NavLink>
+            </li>
+          )}
+          {isUserLoggedIn && (
+            <li>
+              <NavLink className={classes['appHeader__navigation--link']} to="/" onClick={logoutClickHandler}>Logout</NavLink>
             </li>
           )}
         </ul>

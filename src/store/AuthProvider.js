@@ -5,12 +5,9 @@ import AuthContext from './auth-context';
 
 const AuthProvider = (props) => {
   const [authToken, setAuthToken] = useState('');
-  const [user, setUser] = useState({});
 
   const authContext = {
     token: authToken,
-    user: user,
-    setUser: (userData) => setUser(userData),
     setToken: (userToken) => setAuthToken(userToken)
   };
 

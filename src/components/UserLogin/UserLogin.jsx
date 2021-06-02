@@ -5,7 +5,7 @@ import { useHistory, Link, useLocation } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
 import useHttp from '../../hooks/use-http';
-import { login, getAllUsers } from '../../lib/api';
+import { login } from '../../lib/api';
 // import Spinner from '../UI/Spinner';
 
 const UserLogin = () => {
@@ -27,13 +27,17 @@ const UserLogin = () => {
     }
 
     if (status === 'completed') {
-      getAllUsers().then((result) => {
-        const userData = result.find((user) => user.username === userNameInputRef.current.value);
-        authContext.setUser(userData);
-        history.replace('/');
-      });
+      history.replace('/');
     }
   }, [status, data]);
+
+  // if (status === 'pending') {
+  //   return (
+  //     <div className="centered-horizontally">
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
   const submitFormHandler = (event) => {
     event.preventDefault();
