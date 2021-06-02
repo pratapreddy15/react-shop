@@ -11,6 +11,11 @@ const CartList = (props) => {
 
   return (
     <div className={classes.cartList}>
+      {props.products.length === 0 && (
+        <div className="centered-horizontally">
+          <p>No products added! Please add products to cart from Products page.</p>
+        </div>
+      )}
       {props.products.map((p) => {
         return <DisplayItem key={p.id} product={p} />;
       })}
