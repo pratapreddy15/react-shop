@@ -1,12 +1,15 @@
 import classes from './ProductItem.module.css';
 
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Card from '../UI/Card/Card';
 import QuantityInput from '../UI/QuantityInput/QuantityInput';
+import AuthContext from '../../store/auth-context';
 
 const ProductItem = (props) => {
+  const authCtx = useContext(AuthContext);
+  const isUserLoggedIn = !!authCtx.token;
   const { product, onAdd: addProductHandler, onRemove: removeProductHandler } = props;
 
   return (
@@ -16,11 +19,13 @@ const ProductItem = (props) => {
       </div>
       <div className={classes.productTitle}>{product.title}</div>
       <div className={classes.productAmount}>A$ {product.price.toFixed(2)}</div>
-      <QuantityInput
-        onAdd={addProductHandler}
-        onRemove={removeProductHandler}
-        initialValue={product.quantity}
-      />
+      {isUserLoggedIn && (
+        <QuantityInput
+          onAdd={addProductHandler}
+          onRemove={removeProductHandler}
+          initialValue={product.quantity}
+        />
+      )}
     </Card>
   );
 };

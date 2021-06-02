@@ -1,6 +1,7 @@
 .userItem {
-  width: 100%;
+  width: 40%;
   border-bottom: 3px solid var(--color-primary);
+  justify-content: space-between;
 }
 
 .userItem span {

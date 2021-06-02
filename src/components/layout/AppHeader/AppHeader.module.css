@@ -39,3 +39,12 @@
   font-size: 1.2rem;
   color: #fff;
 }
+
+.appHeader__navigation--menu {
+  color: #a89a9a;
+  cursor: pointer;
+}
+
+.appHeader__navigation--menu:hover {
+  color: #fff;
+}
